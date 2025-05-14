@@ -1,2 +1,81 @@
-# Goose-Belt-Purger
-Simple. light and cheap belt purger for 3D printers
+# Goose Belt Purger (GBP)
+Simple, light and cheap belt purger for 3D printers  
+An alternative to blob producing purging routines and devices or traditional purging into purge towers.  
+Designed for Voron Trident, but is small and light enough to be adapted for other printers.  
+
+Currently in early Alpha state - proven as functional concept and can be integrated into printer, but lacks extensive testing to prove long term viability and effectivity. Major refining and redesigns of the design are expected.  
+Considering the above stated project status **DO NOT SHARE** this project or any information about it without prior consent  
+
+# About
+Like so many makers, I have been fascinated by single nozzle multicolor/multimaterial printing. But like so many I hate the purging towers. They can be pretty huge, ugly and occupy prized room on a print bed. For this reason I have been fascinated by the existence of Blobifier - but there are several issues. First is that I have a Voron Trident, which is not compatible. Although there are modifications of Blobifier idea for Trident, none of them seem to have wider user base. Second, both original Blobifier and Trident modifications generaly share unpleasant trait, that every purge requires a toolhead parking near a bed edge, blocking part of the bed and possibly having collision issues with printed object. Third issue is volume inefficiency of produced blobs. Although the blobs themselves are pretty compact, blob shape means they can never utilize blob bin efficiently. This is even worse with loose coil "poops" produced by some printers.   
+  
+There had to be a better way  
+  
+And then it struck me - use a belt to produce compact "line" purges. To be fair, this is not a completely new idea, there have already been mods with purging on a stationary aluminium platforms or on kinematic belt, but none of them seemed right for me. I wanted something simple, something afordable, something you can build with stuff that is already laying around your workshop.  
+This is why Goose Belt Purger was created  
+  
+What does it have to do with goose? Nothing, I just like geese.
+
+# Design
+Core of the GBP, the belt, is omnipresent silicone bracelet. Kind of you can get anywhere, often for free. The most common size, for which GBP is designed, is 12 mm width and 20 cm circumference. Tricky part is getting bracelet without any kind of print or embossing. You can use any bracelet, but print or embossing can cause adhesion issues. But changing of the belt is easy, so use whatever you have on your hand and you can swap it later.  
+Silicone rubber is just the right material for this use. When pushed hard against a nozzle, molten filament sticks to it but separates easily at the end of a straight section of belt. Silicone itself is fairly heat resistant and as long it keeps moving, should withstand heat indefinitely. But keep in mind, it WILL burn (or more precisely turn to brown and black) if you keep nozzle too long on a same spot.  
+  
+Belt is moving along two printed rollers. How does it hold on those rollers without any kind of flanges? Dark magic, don't ask.
+
+One of the rollers is driven by a cheap miniature DC motor with transmision. I used a 12V 300rpm version which is powerful enough to drive the belt, however 300rpm seems to be too fast for practical use, so you can experiment with slower versions. Although motor is rated for 12V, you can also most likely power it with 24V assuming you drive it with less than 50% PWM - as long you do not overheat the motor, voltage should not matter. Note: In my case motor driven with steady 12V heats itself to around 60°C in ambient temperature, which means overheating in hot chamber is certainly possible. Make sure to use low enough PWM duty cycle to keep the temperature reasonable.  
+  
+Other roller is free spinning on a tilting arm. Arm can tilt on a bearing around motor shaft and is pushed upward by a pair of magnets acting as a spring. Arms' purpose is to push against the nozzle hard enough for plastic to stick to belt, but move away to prevent a collision with the nozzle or any part of the printhead.  
+  
+Mounting of GBP is designed to use adjustable Klicky style mount. This can change in the future, but at this moment allows simple adjustment of the position in the frame.  
+
+# BOM
+1x Silicone bracelet 12x200 without print or embossing  
+1x DC motor 12mm diameter 12V 300rpm  
+2x 6x3 magnet (Voron standard size)  
+?x heatset insert M3x5x4 (Voron standard size)  
+M3 hardware (TBD)  
+  
+# Build instructions
+To be done...  
+But really, it is quite simple, you can assemble it based on pictures or look into the CAD data
+
+# Electrical connection
+Connect DC motor to any free power output on your board. Fan output should be fine. If you can, consider supplying it with 12V or even 5V to limit motor heating. If not, make sure to compensate with PWM.
+
+# Software configuration
+Only a simple .cfg with macro is available at this moment, see appropriate folder. Future improvements are expected.  
+  
+General principle which should be followed can be sumarized into this steps:  
+1. Start the belt power at low speed - low speed is needed for plastic to stick to the belt
+2. Move the nozzle to safe position for approach to belt
+3. Move the nozzle to touch the belt in upper section - belt must me moving at this point in order to prevent belt being burnt
+4. Start purging at low feed rate and keep purging for set time - to ensure filament holds on belt
+5. Increase belt speed and purge rate to complete required purge volume
+6. Stop purging and decrease belt speed to low speed to wipe off remaining nozzle pressure
+7. Move the nozzle away from belt and disable belt power.
+
+Individual parameters need to be tuned for your use case. You need to find a balance where you start slow enough to be reliable, but do not spend too much time purging. If you start too fast, plastic has tendency to not stick and instead rolls into a blob which might stick to your nozzle or printhead, causing a mess. On the other hand once enough plastic has stuck on the belt, it pulls more from the nozzle and you can increase the feed rate. 
+
+# Risks
+This is a mod in an early stage of development which has not been extensively tested. There are number of identified risks which can happen, but also a range of unexpected issues. If you run into any issues, make sure you let me know.   
+Identified known risks:  
+- low lifetime of the motor (mechanical wear)
+- overheating of motor
+- burning of the belt
+- deformation of structure due to thermal loads and tension of the belt
+- belt slipping of rollers
+- blobbing of your nozzle due to bad adhesion or due to pieces of plastic sticking too well and making their way all the way around back to nozzle
+- messing up your prints and/or printer due to uncontrolled fallout of purged lines
+
+Unexpected (but not impossible) risks:
+- killing your goose
+- burning down your house
+- opening a black hole
+- anything not mentioned above
+
+# Future tasks and ideas
+As the design stands, it should work as a purger, but does not manage anyhow wasted filament. At this moment it just dumps all the waste down into your printer causing a mess. It is up to user to somehow contain it with a bin of its own. This is of course not desirable state and before GBP can be considered for general useage at least a basic reference solution for waste containment needs to be provided. It is expected as time goes users will create their own versions of the waste bin and therefore GBP shall be designed to allow for widest possible range of waste bin designs.  
+  
+Additional issue that needs to be adressed is waste volum efficiency, especially given that GBP is intended to improve on contemporary designs. As it is, default purge lines produced by GBP will be rather volume inefficient if left to freely fall into the bin. Proposed solution is some kind of shredder or cutter, that will shred the waste into small pellets. No technical solution is considered at this moment.
+
+
