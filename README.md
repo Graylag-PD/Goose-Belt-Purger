@@ -1,8 +1,9 @@
 # Goose Belt Purger (GBP)
 Simple, light and cheap belt purger for 3D printers  
 An alternative to blob producing purging routines and devices or traditional purging into purge towers.  
-Designed for Voron Trident, but is small and light enough to be adapted for other printers.  
-!(/Assets/IMG20250603203242_crop.jpg)
+Designed for Voron Trident, but is small and light enough to be adapted for other printers.    
+  
+![](/Assets/IMG20250603203242_crop.jpg)
   
 Currently in early Alpha state - proven as functional concept and can be integrated into printer, but lacks extensive testing to prove long term viability and effectivity. Major refining and redesigns of the design are expected.  
 Considering the above stated project status **DO NOT SHARE** this project or any information about it without prior consent  
@@ -24,19 +25,21 @@ Silicone rubber is just the right material for this use. When extruded on a smoo
 Belt is moving along two printed rollers. How does it hold on those rollers without any kind of flanges? Dark magic, don't ask.
 
 One of the rollers is driven by a cheap miniature DC motor with transmision. I used a 12V 300rpm version which is powerful enough to drive the belt, however 300rpm is too fast for practical use, so you should get version with 50rpm or less. Although motor is rated for 12V, you can also most likely power it with 24V assuming you drive it with less than 50% PWM - as long you do not overheat the motor, voltage should not matter. Note: In my case motor driven with steady 12V heats itself to around 60°C in ambient temperature, which means overheating in hot chamber is certainly possible. Make sure to use low enough PWM duty cycle to keep the temperature reasonable.  
-IMPORTANT: Make sure to read and understand comments in section "Electrical connection". Risk of permanent damage to your controller board!
+> [!WARNING]
+> Make sure to read and understand comments in section "Electrical connection". Risk of permanent damage to your controller board!
   
 Other roller is free spinning on a tilting arm. Arm can tilt on a bearing around motor shaft and is pushed upward by a pair of magnets acting as a spring. Arms' purpose is to push against the nozzle, but move away to prevent a collision with the nozzle or any part of the printhead.  
   
 Mounting of GBP is designed to use adjustable Klicky style mount. This can change in the future, but at this moment allows simple adjustment of the position in the frame.  
 
 # BOM
-1x Silicone bracelet 12x200
-1x DC motor 12mm diameter 12V 50rpm (or less)  
-2x 623 bearings  
-2x 6x3 magnet (Voron standard size)  
-12x heatset insert M3x5x4 (Voron standard size)  
-M3 hardware:  
+- 1x Silicone bracelet 12x200
+- 1x DC motor 12mm diameter 12V 50rpm (or less)  
+- 2x 623 bearings  
+- 2x 6x3 magnet (Voron standard size)  
+- 12x heatset insert M3x5x4 (Voron standard size)
+   
+**M3 hardware:**  
  - 1x M3 nut
  - 1x M3 grub screw
  - 8x M3x8 SHCS
@@ -50,16 +53,17 @@ But really, it is quite simple, you can assemble it based on pictures or look in
 
 # Electrical connection
 Connect DC motor to any free power output on your board. Fan output should be fine. If you can, consider supplying it with 12V or even 5V to limit motor heating. If not, make sure to compensate with PWM.  
-IMPORTANT: DC motor is a strong inductive load, which means it will produce large voltage spikes, which unless treated WILL destroy your boards mosfet or even MCU. A sufficiently dimensioned Schottky flyback diode across board output is the bare minimum, but I also recommend adding a RC snubber to motor terminals.  
-As for diodes, some boards have them already included (for example BTT Octopus), some rely just on a diode in a mosfet, which is generally not sufficient. Consult your boards schematic, use your best judgement and when in doubt, ask someone.  
-As for RC snubber, I used a 47 Ohm resistor and 10 nF 50V ceramic capacitor. Solder together one leg of both components and then solder other two to motor, one leg to each motor terminal. 47R/10nF proved to sufficiently dampen any spikes while also not influencing too much the PWM regulation response. You can use larger capacitor if you want to be extra safe, but larger the capacity, the worse PWM response you will have. It is not recommended to replace RC snubber with just capacitor, because this will cause resonance and make matters even worse.  
+> [!IMPORTANT]
+> DC motor is a strong inductive load, which means it will produce large voltage spikes, which unless treated WILL destroy your boards mosfet or even MCU. A sufficiently dimensioned Schottky flyback diode across board output is the bare minimum, but I also recommend adding a RC snubber to motor terminals.
+> As for diodes, some boards have them already included (for example BTT Octopus), some rely just on a diode in a mosfet, which is generally not sufficient. Consult your boards schematic, use your best judgement and when in doubt, ask someone.  
+> As for RC snubber, I used a 47 Ohm resistor and 10 nF 50V ceramic capacitor. Solder together one leg of both components and then solder other two to motor, one leg to each motor terminal. 47R/10nF proved to sufficiently dampen any spikes while also not influencing too much the PWM regulation response. You can use larger capacitor if you want to be extra safe, but larger the capacity, the worse PWM response you will have. It is not recommended to replace RC snubber with just capacitor, because this will cause resonance and make matters even worse.  
   
 I did measure effectivity of described measures with an oscilloscope, but I cannot guarantee there are no fast transients I did not caught (for example when changing PWM duty cycle) and there is not enough test data gathered yet to be 100% sure there are no issues. So be careful and make sure you understand what is going on. 
 
 # Software configuration
 A .cfg with macro is available at this moment, see comments in the file and configure to your printer. Future refinements are expected.  
   
-Once everything is in place, you can call purge routine by running gcode macro 'goose_purge VOLUME=###' where  xxxis requested purge volume in mm3. It is expected this can be called by a slicer after toolchange.  
+Once everything is in place, you can call purge routine by running gcode macro `goose_purge VOLUME=###` where  ### is requested purge volume in mm3. It is expected this can be called by a slicer after toolchange.  
   
 # Tips and observed behaviour
 Extrusion shall be done on a smooth inner side of the bracelet. You can also try extruding on the outer textured side, but adhesion is generaly worse and also you need a bracelet without embossing or print, which is surprisingly difficult to get. Inner surface has excellent adhesion even when it does not directly touches nozzle, while outer surface generaly needs to be pushed really hard into the nozzle - harder than magnets in design can provide.  
