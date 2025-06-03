@@ -2,7 +2,8 @@
 Simple, light and cheap belt purger for 3D printers  
 An alternative to blob producing purging routines and devices or traditional purging into purge towers.  
 Designed for Voron Trident, but is small and light enough to be adapted for other printers.  
-
+!(/Assets/IMG20250603203242_crop.jpg)
+  
 Currently in early Alpha state - proven as functional concept and can be integrated into printer, but lacks extensive testing to prove long term viability and effectivity. Major refining and redesigns of the design are expected.  
 Considering the above stated project status **DO NOT SHARE** this project or any information about it without prior consent  
 
@@ -57,11 +58,14 @@ I did measure effectivity of described measures with an oscilloscope, but I cann
 
 # Software configuration
 A .cfg with macro is available at this moment, see comments in the file and configure to your printer. Future refinements are expected.  
-
+  
+Once everything is in place, you can call purge routine by running gcode macro 'goose_purge VOLUME=###' where  xxxis requested purge volume in mm3. It is expected this can be called by a slicer after toolchange.  
+  
 # Tips and observed behaviour
 Extrusion shall be done on a smooth inner side of the bracelet. You can also try extruding on the outer textured side, but adhesion is generaly worse and also you need a bracelet without embossing or print, which is surprisingly difficult to get. Inner surface has excellent adhesion even when it does not directly touches nozzle, while outer surface generaly needs to be pushed really hard into the nozzle - harder than magnets in design can provide.  
   
 Adhesion depends a lot on the belt speed. If you have trouble with fillament sticking, try to slow the belt down. As soon part of the fillament started sticking on the belt, you can speed up, because deposited material starts pulling more from the nozzle.  
+Part cooling fan can also improve adhesion but this is not included in macro yet.  
   
 Inner smooth bracelet side in fact sticks a little bit too much and if you extrude too thin line, you can have issue getting it off the belt solution is to run the belt slow enough so that thick solid waste line gets extruded and has time to cool down. This line then usually just falls off the belt on its end.
 
