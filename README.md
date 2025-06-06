@@ -34,7 +34,7 @@ Mounting of GBP is designed to use adjustable Klicky style mount. This can chang
 
 # BOM
 - 1x Silicone bracelet 12x200
-- 1x DC motor 12mm diameter 12V 50rpm (or less)  
+- 1x DC motor 12mm diameter 12V 50rpm (or less) - Commonly sold as GA12 N20 or N30
 - 2x 623 bearings  
 - 2x 6x3 magnet (Voron standard size)  
 - 12x heatset insert M3x5x4 (Voron standard size)
@@ -45,14 +45,17 @@ Mounting of GBP is designed to use adjustable Klicky style mount. This can chang
  - 8x M3x8 SHCS
  - 1x M3x16 SHCS
  - 1x M3x20 SHCS
- - 2x M3x20 FHCS
+ - 2x M3x20 FHCS  
+
+If your board has option to supply 5V to fan outputs, you may get 6V motor version. If you have just 24V output, get 12V motor and use less than 50% PWM  
+Initial tests have shown, that optimal speed under load is 12rpm or less, so you may try as low as 15 rpm version. 
   
 # Build instructions
 To be done...  
 But really, it is quite simple, you can assemble it based on pictures or look into the CAD data
 
 # Electrical connection
-Connect DC motor to any free power output on your board. Fan output should be fine. If you can, consider supplying it with 12V or even 5V to limit motor heating. If not, make sure to compensate with PWM.  
+Connect DC motor to any free power output on your board. Fan output is recommended. If you can, consider supplying it with 12V or even 5V to limit motor heating. If not, make sure to compensate with PWM.  
 > [!IMPORTANT]
 > DC motor is a strong inductive load, which means it will produce large voltage spikes, which unless treated WILL destroy your boards mosfet or even MCU. A sufficiently dimensioned Schottky flyback diode across board output is the bare minimum, but I also recommend adding a RC snubber to motor terminals.
 > As for diodes, some boards have them already included (for example BTT Octopus), some rely just on a diode in a mosfet, which is generally not sufficient. Consult your boards schematic, use your best judgement and when in doubt, ask someone.  
@@ -62,18 +65,26 @@ I did measure effectivity of described measures with an oscilloscope, but I cann
 
 # Software configuration
 A .cfg with macro is available at this moment, see comments in the file and configure to your printer. Future refinements are expected.  
+
+If you are using HappyHare or similar tool, make sure to configure it to not return to last or next gcode position.
   
 Once everything is in place, you can call purge routine by running gcode macro `goose_purge VOLUME=###` where  ### is requested purge volume in mm3. It is expected this can be called by a slicer after toolchange.  
+
+# Slicer configuration
+Simply put the `goose_purge VOLUME=###` call at the begining of your code at the place where prime line would be. And to tool change GCode, just after `T# ;` command.  
+Unfortunately not all slicers support passing the purge volume as parameter. If you use Orca slicer, following should work `goose_purge VOLUME=[flush_length]`. If you use Prusa slicer, you need to hardcode your purge volume. 
   
 # Tips and observed behaviour
 Extrusion shall be done on a smooth inner side of the bracelet. You can also try extruding on the outer textured side, but adhesion is generaly worse and also you need a bracelet without embossing or print, which is surprisingly difficult to get. Inner surface has excellent adhesion even when it does not directly touches nozzle, while outer surface generaly needs to be pushed really hard into the nozzle - harder than magnets in design can provide.  
   
 Adhesion depends a lot on the belt speed. If you have trouble with fillament sticking, try to slow the belt down. As soon part of the fillament started sticking on the belt, you can speed up, because deposited material starts pulling more from the nozzle.  
-Part cooling fan can also improve adhesion but this is not included in macro yet.  
+Part cooling fan can also improve adhesion but this is not included in macro yet. 
   
-Inner smooth bracelet side in fact sticks a little bit too much and if you extrude too thin line, you can have issue getting it off the belt solution is to run the belt slow enough so that thick solid waste line gets extruded and has time to cool down. This line then usually just falls off the belt on its end.
+Inner smooth bracelet side in fact sticks a little bit too much and if you extrude too thin line, you can have issue getting it off the belt. Solution is to run the belt slow enough so that thick solid waste line gets extruded and has time to cool down. This line then usually just falls off the belt on its end.
 
-Included macro splits waste purge line into short "toothpick" sizes. This is intended as a measure to improve waste volume efficiency. 
+Included macro splits waste purge line into short "toothpick" sizes. This is intended as a measure to improve waste volume efficiency.  
+
+Initial tests have shown, that the optimal belt speed is about 12rpm or less (or about 11mm/s (660mm/min). Easiest way to measure your speed is to mark a spot on either pulley or idler, take a stopwatch and just measure time it takes to make 10 revolutions. 
 
 # Risks
 This is a mod in an early stage of development which has not been extensively tested. There are number of identified risks which can happen, but also a range of unexpected issues. If you run into any issues, make sure you let me know.   
