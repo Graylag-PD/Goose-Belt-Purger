@@ -68,7 +68,8 @@ A .cfg with macro is available at this moment, see comments in the file and conf
 
 If you are using HappyHare or similar tool, make sure to configure it to not return to last or next gcode position.
   
-Once everything is in place, you can call purge routine by running gcode macro `goose_purge VOLUME=###` where  ### is requested purge volume in mm3. It is expected this can be called by a slicer after toolchange.  
+Once everything is in place, you can call purge routine by running gcode macro `goose_purge VOLUME=###` or `goose_purge LENGTH=###` where  ### is requested purge volume in mm3 or purge length in mm. It is expected this can be called by a slicer after toolchange.  
+If both parameters are provided, `LENGTH` has priority. If neither is provided, purge volume defaults to 0 and routine runs without extruding anything. 
 
 # Slicer configuration
 Simply put the `goose_purge VOLUME=###` call at the begining of your code at the place where prime line would be. And to tool change GCode, just after `T# ;` command.  
