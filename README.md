@@ -72,8 +72,8 @@ Once everything is in place, you can call purge routine by running gcode macro `
 If both parameters are provided, `LENGTH` has priority. If neither is provided, purge volume defaults to 0 and routine runs without extruding anything. 
 
 # Slicer configuration
-Simply put the `goose_purge VOLUME=###` call at the begining of your code at the place where prime line would be. And to tool change GCode, just after `T# ;` command.  
-Unfortunately not all slicers support passing the purge volume as parameter. If you use Orca slicer, following should work `goose_purge VOLUME=[flush_length]`. If you use Prusa slicer, you need to hardcode your purge volume. 
+Simply put the `goose_purge VOLUME=###` or `goose_purge LENGTH=###` call at the begining of your code at the place where prime line would be. And to tool change GCode, just after `T# ;` command.  
+Unfortunately not all slicers support passing the purge volume as parameter. If you use Orca slicer, following should work `goose_purge LENGTH=[flush_length]`. If you use Prusa slicer, you need to hardcode your purge volume. 
   
 # Tips and observed behaviour
 Extrusion shall be done on a smooth inner side of the bracelet. You can also try extruding on the outer textured side, but adhesion is generaly worse and also you need a bracelet without embossing or print, which is surprisingly difficult to get. Inner surface has excellent adhesion even when it does not directly touches nozzle, while outer surface generaly needs to be pushed really hard into the nozzle - harder than magnets in design can provide.  
