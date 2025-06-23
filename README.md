@@ -34,7 +34,7 @@ Mounting of GBP is designed to use adjustable Klicky style mount. This can chang
 
 # BOM
 - 1x Silicone bracelet 12x200
-- 1x DC motor 12mm diameter 12V 50rpm (or less) - Commonly sold as GA12 N20 or N30
+- 1x DC motor 12mm diameter 12V 50rpm (or less) - Commonly sold as GA12 N20 or N30. See note below.
 - 2x 623 bearings  
 - 2x 6x3 magnet (Voron standard size)  
 - 12x heatset insert M3x5x4 (Voron standard size)
@@ -48,7 +48,7 @@ Mounting of GBP is designed to use adjustable Klicky style mount. This can chang
  - 2x M3x20 FHCS  
 
 If your board has option to supply 5V to fan outputs, you may get 6V motor version. If you have just 24V output, get 12V motor and use less than 50% PWM  
-Initial tests have shown, that optimal speed under load is 12rpm or less, so you may try as low as 15 rpm version. 
+Initial tests have shown, that optimal speed under load is 2 - 12rpm, so you may try as low as 15 rpm version. With PWM you can typicaly get to 5-10% of nominal speed, so choose accordingly. 
   
 # Build instructions
 To be done...  
@@ -85,7 +85,7 @@ Inner smooth bracelet side in fact sticks a little bit too much and if you extru
 
 Included macro splits waste purge line into short "toothpick" sizes. This is intended as a measure to improve waste volume efficiency.  
 
-Initial tests have shown, that the optimal belt speed is about 12rpm or less (or about 11mm/s (660mm/min). Easiest way to measure your speed is to mark a spot on either pulley or idler, take a stopwatch and just measure time it takes to make 10 revolutions. 
+Initial tests have shown, that the optimal belt speed is between 2 and 12rpm (or about 1,8 - 11mm/s (108 - 660mm/min). Easiest way to measure your speed is to mark a spot on either pulley or idler, take a stopwatch and just measure time it takes to make 10 revolutions.  
 
 # Risks
 This is a mod in an early stage of development which has not been extensively tested. There are number of identified risks which can happen, but also a range of unexpected issues. If you run into any issues, make sure you let me know.   
