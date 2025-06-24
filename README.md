@@ -1,112 +1,133 @@
 # Goose Belt Purger (GBP)
-Simple, light and cheap belt purger for 3D printers  
-An alternative to blob producing purging routines and devices or traditional purging into purge towers.  
-Designed for Voron Trident, but is small and light enough to be adapted for other printers.    
+A simple, lightweight, and low-cost belt purger for 3D printers.\
+An alternative to blob-producing purging routines and devices, or traditional purging into towers.\
+Originally designed for the Voron Trident, but small and light enough to be adapted for other printers.
+
   
 ![](/Assets/IMG20250603203242_crop.jpg)
   
-Currently in early Alpha state - proven as functional concept and can be integrated into printer, but lacks extensive testing to prove long term viability and effectivity. Major refining and redesigns of the design are expected.  
-Considering the above stated project status **DO NOT SHARE** this project or any information about it without prior consent  
+Currently in an early Alpha state — proven as a functional concept that can be integrated into a printer, but lacking extensive testing to demonstrate long-term viability and effectiveness. Major refinements and redesigns are expected.\
+**DO NOT SHARE** this project or any information about it without prior consent.
+
 
 # About
-Like so many makers, I have been fascinated by single nozzle multicolor/multimaterial printing. But like so many I hate the purging towers. They can be pretty huge, ugly and occupy prized room on a print bed. For this reason I have been fascinated by the existence of Blobifier - but there are several issues. First is that I have a Voron Trident, which is not compatible. Although there are modifications of Blobifier idea for Trident, none of them seem to have wider user base. Second, both original Blobifier and Trident modifications generaly share unpleasant trait, that every purge requires a toolhead parking near a bed edge, blocking part of the bed and possibly having collision issues with printed object. Third issue is volume inefficiency of produced blobs. Although the blobs themselves are pretty compact, blob shape means they can never utilize blob bin efficiently. This is even worse with loose coil "poops" produced by some printers.   
-  
-There had to be a better way  
-  
-And then it struck me - use a belt to produce compact "line" purges. To be fair, this is not a completely new idea, there have already been mods with purging on a stationary aluminium platforms or on kinematic belt, but none of them seemed right for me. I wanted something simple, something afordable, something you can build with stuff that is already laying around your workshop.  
-This is why Goose Belt Purger was created  
-  
-What does it have to do with goose? Nothing, I just like geese.
+Like many makers, I've been fascinated by single-nozzle multicolor/multimaterial printing. But like many, I hate purge towers. They can be large, ugly, and take up valuable print bed space. This is why I was intrigued by the Blobifier — but there are several issues. First, I use a Voron Trident, which isn't compatible. While there are adaptations of the Blobifier concept for the Trident, none have gained significant traction. Second, both the original Blobifier and its Trident adaptations generally share the drawback that each purge requires toolhead parking near the bed edge, blocking part of the bed and potentially risking collisions. Third, the produced blobs are volumetrically inefficient. Even though the blobs are relatively compact, their shape means they can't utilize the waste bin space effectively. This is even worse with the loose coil "poops" produced by some printers.
+
+There had to be a better way.
+
+And then it struck me — use a belt to produce compact "line" purges. To be fair, this isn't an entirely new idea. There have been mods involving purging on stationary aluminum platforms or kinematic belts, but none of those options felt right. I wanted something simple, affordable, and buildable from stuff you already have lying around your workshop.\
+This is why the Goose Belt Purger was created.
+
+What does it have to do with geese? Nothing. I just like geese.
+
 
 # Design
-Core of the GBP, the belt, is omnipresent silicone bracelet. Kind of you can get anywhere, often for free. The most common size, for which GBP is designed, is 12 mm width and 20 cm circumference. You can use any that you can find, including embossed or printed on pieces, because we are going to use smooth inner surface. And changing of the belt is easy, so use whatever you have on your hand and you can swap it later.  
-Silicone rubber is just the right material for this use. When extruded on a smooth side, molten filament sticks to it but separates easily at the end of a straight section of belt. Silicone itself is fairly heat resistant and as long it keeps moving, should withstand heat indefinitely. But keep in mind, it WILL burn (or more precisely turn to brown and black) if you keep nozzle too long on a same spot.  
-  
-Belt is moving along two printed rollers. How does it hold on those rollers without any kind of flanges? Dark magic, don't ask.
 
-One of the rollers is driven by a cheap miniature DC motor with transmision. I used a 12V 300rpm version which is powerful enough to drive the belt, however 300rpm is too fast for practical use, so you should get version with 50rpm or less. Although motor is rated for 12V, you can also most likely power it with 24V assuming you drive it with less than 50% PWM - as long you do not overheat the motor, voltage should not matter. Note: In my case motor driven with steady 12V heats itself to around 60°C in ambient temperature, which means overheating in hot chamber is certainly possible. Make sure to use low enough PWM duty cycle to keep the temperature reasonable.  
-> [!WARNING]
-> Make sure to read and understand comments in section "Electrical connection". Risk of permanent damage to your controller board!
-  
-Other roller is free spinning on a tilting arm. Arm can tilt on a bearing around motor shaft and is pushed upward by a pair of magnets acting as a spring. Arms' purpose is to push against the nozzle, but move away to prevent a collision with the nozzle or any part of the printhead.  
-  
-Mounting of GBP is designed to use adjustable Klicky style mount. This can change in the future, but at this moment allows simple adjustment of the position in the frame.  
+The core of the GBP is a silicone wristband — the kind you can get anywhere, often for free. The most common size, which GBP is designed around, is 12 mm wide and 20 cm in circumference. You can use any similar band, even ones with embossing or printing, since we'll use the smooth inner surface. Changing the belt is easy, so use whatever you have and swap it later if needed.
 
-# BOM
-- 1x Silicone bracelet 12x200
-- 1x DC motor 12mm diameter 12V 50rpm (or less) - Commonly sold as GA12 N20 or N30. See note below.
-- 2x 623 bearings  
-- 2x 6x3 magnet (Voron standard size)  
-- 12x heatset insert M3x5x4 (Voron standard size)
-   
-**M3 hardware:**  
- - 1x M3 nut
- - 1x M3 grub screw
- - 8x M3x8 SHCS
- - 1x M3x16 SHCS
- - 1x M3x20 SHCS
- - 2x M3x20 FHCS  
+Silicone rubber is ideal for this use. When filament is extruded onto the smooth side, it sticks but releases easily at the end of the straight belt section. Silicone is heat-resistant enough to endure the nozzle heat, provided it keeps moving. However, if the nozzle stays in one place too long, the band will discolor (brown or black) or even burn.
 
-If your board has option to supply 5V to fan outputs, you may get 6V motor version. If you have just 24V output, get 12V motor and use less than 50% PWM  
-Initial tests have shown, that optimal speed under load is 2 - 12rpm, so you may try as low as 15 rpm version. With PWM you can typicaly get to 5-10% of nominal speed, so choose accordingly. 
-  
-# Build instructions
-To be done...  
-But really, it is quite simple, you can assemble it based on pictures or look into the CAD data
+The belt moves along two printed pulleys. How does it stay in place without flanges? Dark magic. Don't ask.
 
-# Electrical connection
-Connect DC motor to any free power output on your board. Fan output is recommended. If you can, consider supplying it with 12V or even 5V to limit motor heating. If not, make sure to compensate with PWM.  
-> [!IMPORTANT]
-> DC motor is a strong inductive load, which means it will produce large voltage spikes, which unless treated WILL destroy your boards mosfet or even MCU. A sufficiently dimensioned Schottky flyback diode across board output is the bare minimum, but I also recommend adding a RC snubber to motor terminals.
-> As for diodes, some boards have them already included (for example BTT Octopus), some rely just on a diode in a mosfet, which is generally not sufficient. Consult your boards schematic, use your best judgement and when in doubt, ask someone.  
-> As for RC snubber, I used a 47 Ohm resistor and 10 nF 50V ceramic capacitor. Solder together one leg of both components and then solder other two to motor, one leg to each motor terminal. 47R/10nF proved to sufficiently dampen any spikes while also not influencing too much the PWM regulation response. You can use larger capacitor if you want to be extra safe, but larger the capacity, the worse PWM response you will have. It is not recommended to replace RC snubber with just capacitor, because this will cause resonance and make matters even worse.  
-  
-I did measure effectivity of described measures with an oscilloscope, but I cannot guarantee there are no fast transients I did not caught (for example when changing PWM duty cycle) and there is not enough test data gathered yet to be 100% sure there are no issues. So be careful and make sure you understand what is going on. 
+One pulley is driven by a cheap miniature DC motor with a gearbox.  A 50rpm or slower version is recommended, up to 15rpm if you want really thick extrusions. &#x20;
 
-# Software configuration
-A .cfg with macro is available at this moment, see comments in the file and configure to your printer. Future refinements are expected.  
+> [!WARNING]\
+> Be sure to read the "Electrical connection" section carefully. There's a real risk of permanently damaging your controller board!
 
-If you are using HappyHare or similar tool, make sure to configure it to not return to last or next gcode position.
-  
-Once everything is in place, you can call purge routine by running gcode macro `goose_purge VOLUME=###` or `goose_purge LENGTH=###` where  ### is requested purge volume in mm3 or purge length in mm. It is expected this can be called by a slicer after toolchange.  
-If both parameters are provided, `LENGTH` has priority. If neither is provided, purge volume defaults to 0 and routine runs without extruding anything. 
+The other pulley spins freely on a tilting arm. The arm pivots on a bearing around the motor shaft and is pushed upward by a pair of magnets acting as springs. The arm's purpose is to press against the nozzle but move away to avoid collisions with the nozzle or printhead.
 
-# Slicer configuration
-Simply put the `goose_purge VOLUME=###` or `goose_purge LENGTH=###` call at the begining of your code at the place where prime line would be. And to tool change GCode, just after `T# ;` command.  
-Unfortunately not all slicers support passing the purge volume as parameter. If you use Orca slicer, following should work `goose_purge LENGTH=[flush_length]`. If you use Prusa slicer, you need to hardcode your purge volume. 
-  
-# Tips and observed behaviour
-Extrusion shall be done on a smooth inner side of the bracelet. You can also try extruding on the outer textured side, but adhesion is generaly worse and also you need a bracelet without embossing or print, which is surprisingly difficult to get. Inner surface has excellent adhesion even when it does not directly touches nozzle, while outer surface generaly needs to be pushed really hard into the nozzle - harder than magnets in design can provide.  
-  
-Adhesion depends a lot on the belt speed. If you have trouble with fillament sticking, try to slow the belt down. As soon part of the fillament started sticking on the belt, you can speed up, because deposited material starts pulling more from the nozzle.  
-Part cooling fan can also improve adhesion but this is not included in macro yet. 
-  
-Inner smooth bracelet side in fact sticks a little bit too much and if you extrude too thin line, you can have issue getting it off the belt. Solution is to run the belt slow enough so that thick solid waste line gets extruded and has time to cool down. This line then usually just falls off the belt on its end.
+GBP is mounted using an adjustable Klicky-style mount. This may change in the future but currently allows simple position adjustment within the frame.
 
-Included macro splits waste purge line into short "toothpick" sizes. This is intended as a measure to improve waste volume efficiency.  
+# Bill of Materials (BOM)
 
-Initial tests have shown, that the optimal belt speed is between 2 and 12rpm (or about 1,8 - 11mm/s (108 - 660mm/min). Easiest way to measure your speed is to mark a spot on either pulley or idler, take a stopwatch and just measure time it takes to make 10 revolutions.  
+- 1x Silicone wristband (12 mm wide, 200 mm circumference)
+- 1x DC motor, 12 mm diameter, 12V, 50rpm (or slower) — commonly sold as GA12 N20 or N30. See note below.
+- 2x 623 bearings
+- 2x 6x3 mm magnets (Voron standard size)
+- 12x heat-set insert M3x5x4 (Voron standard size)
+
+**M3 hardware:**
+
+- 1x M3 nut
+- 1x M3 grub screw
+- 8x M3x8 SHCS
+- 1x M3x16 SHCS
+- 1x M3x20 SHCS
+- 2x M3x20 FHCS
+
+If your board supports 5V on fan outputs, you may use a 6V motor. If only 24V is available, use a 12V motor with <50% PWM.\
+Initial testing shows optimal belt speed under load is 2–12rpm, so even a 15rpm motor may suffice. PWM can reduce speed to \~5–10% of rated speed.
+
+# Build Instructions
+
+Build instructions can be found [here](assembly.md).
+
+# Electrical Connection
+
+Connect the DC motor to any free power output on your controller board, preferably a fan output. If possible, supply it with 5V or 12V to minimize heating. Otherwise, reduce voltage via PWM.
+
+> [!IMPORTANT]\
+> The DC motor is a strong inductive load and will generate large voltage spikes, which can destroy your board's MOSFET or even the MCU if untreated. At minimum, use a properly sized Schottky flyback diode across the board output. I also recommend an RC snubber on the motor terminals.
+>
+> Some boards (e.g., BTT Octopus) already include protection diodes. Others rely only on the MOSFET's internal diode, which is usually insufficient. Consult your board's schematic. When unsure, ask someone.
+>
+> For the RC snubber, I used a 47 Ω resistor and a 10 nF, 50V ceramic capacitor. Solder one leg of each component together, then solder the free legs to the motor terminals. This configuration dampens voltage spikes while preserving PWM response. You may use a larger capacitor for extra safety, but note that increased capacitance degrades PWM response. Avoid using a capacitor alone (without resistor), as this can cause resonance and make things worse.
+
+I confirmed the effectiveness of these measures with an oscilloscope, but I can't guarantee that no fast transients were missed (e.g., during PWM changes). Data is still limited, so proceed with care and understand what you're doing.
+
+# Software Configuration
+
+A configuration file with a macro is available. See comments in the file and adapt it to your printer. Future refinements are expected.
+
+If you're using HappyHare or a similar tool, configure it so it doesn't return to the previous or next G-code position.
+
+Once set up, the purge routine can be triggered by running the G-code macro:
+
+- `goose_purge VOLUME=###` or
+- `goose_purge LENGTH=###`\
+  where `###` is the purge volume in mm³ or length in mm. If both are provided, `LENGTH` takes precedence. If neither is provided, the macro runs without extruding.
+
+# Slicer Configuration
+
+Place the `goose_purge` macro at the beginning of your start G-code where you'd normally place a prime line. For tool changes, insert it just after the `T# ;` command.
+
+Note that not all slicers support passing purge parameters. In OrcaSlicer, you can use `goose_purge LENGTH=[flush_length]`. In PrusaSlicer, the volume must be hardcoded.
+
+# Tips and Observations
+ 
+Extrude onto the smooth inner side of the wristband. You can try the outer side, but adhesion is generally worse and requires an unembossed, unprinted band — which is surprisingly hard to find. The inner surface sticks well, even without direct nozzle contact, while the outer side requires pressure that magnets alone can't provide.
+
+Adhesion heavily depends on belt speed. If filament doesn't stick, slow the belt. Once adhesion starts, the extruded line tends to pull more material from the nozzle. A part cooling fan can help, though this isn't yet included in the macro.
+
+The macro splits the purge into short "toothpicks" or pellets to improve waste volume efficiency.
+
+Initial testing shows optimal belt speed is 2–12rpm (roughly 1.8–11 mm/s or 108–660 mm/min). The easiest way to measure speed is to mark a spot on a pulley, start a stopwatch, and time 10 full revolutions.
 
 # Risks
-This is a mod in an early stage of development which has not been extensively tested. There are number of identified risks which can happen, but also a range of unexpected issues. If you run into any issues, make sure you let me know.   
-Identified known risks:  
-- low lifetime of the motor (mechanical wear)
-- overheating of motor
-- burning of the belt
-- deformation of structure due to thermal loads and tension of the belt
-- belt slipping of rollers
-- blobbing of your nozzle due to bad adhesion or due to pieces of plastic sticking too well and making their way all the way around back to nozzle
-- messing up your prints and/or printer due to uncontrolled fallout of purged lines
 
-Unexpected (but not impossible) risks:
-- killing your goose
-- burning down your house
-- opening a black hole
-- anything not mentioned above
+This is an early-stage mod and hasn't been extensively tested. Known and unknown risks exist. If issues arise, please report them.
 
-# Future tasks and ideas
-As the design stands, it should work as a purger, but does not manage anyhow wasted filament. At this moment it just dumps all the waste down into your printer causing a mess. It is up to user to somehow contain it with a bin of its own. This is of course not desirable state and before GBP can be considered for general useage at least a basic reference solution for waste containment needs to be provided. It is expected as time goes users will create their own versions of the waste bin and therefore GBP shall be designed to allow for widest possible range of waste bin designs.  
-  
-Additional issue that needs to be adressed is waste volum efficiency, especially given that GBP is intended to improve on contemporary designs. As it is, default purge lines produced by GBP can be rather volume inefficient if left to freely fall into the bin. Proposed solution is some kind of shredder or cutter, that will shred the waste into small pellets. No technical solution is considered at this moment.
+**Known risks:**
+
+- Limited motor lifespan due to mechanical wear
+- Motor overheating
+- Belt burning
+- Frame deformation due to heat or tension
+- Belt slipping
+- Poor purge adhesion or debris returning to the nozzle
+- Print failures or damage from stray purged filament
+
+**Unexpected but possible risks:**
+
+- Goose death
+- House fire
+- Creation of a black hole
+- Other unforeseen consequences
+
+# Future Tasks and Ideas
+
+Currently, the GBP does not manage purged filament — waste simply falls into the printer. Users are expected to provide their own waste bins. For wider adoption, a reference design for waste containment will be necessary. GBP should support a variety of bin designs.
+
+Another issue is waste volume efficiency. The current default purge lines are relatively inefficient when allowed to fall freely. One possible solution is a shredder or cutter to break waste into pellets. No specific design exists yet.
 
 
