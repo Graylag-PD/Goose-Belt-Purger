@@ -36,27 +36,34 @@ One pulley is driven by a cheap miniature DC motor with a gearbox.  A 50rpm or s
 
 The other pulley spins freely on a tilting arm. The arm pivots on a bearing around the motor shaft and is pushed upward by a pair of magnets acting as springs. The arm's purpose is to press against the nozzle but move away to avoid collisions with the nozzle or printhead.
 
-GBP is mounted using an adjustable Klicky-style mount. This may change in the future but currently allows simple position adjustment within the frame.
+GBP is mounted using a Armored Turtle brush mount. You can design your own mount and connect it with AT mount styled dovetails.
 
 # Bill of Materials (BOM)
 
 - 1x Silicone wristband (12 mm wide, 200 mm circumference)
-- 1x DC motor, 12 mm diameter, 12V, 50rpm (or slower) — commonly sold as GA12 N20 or N30. See note below.
-- 2x 623 bearings
+- 1x DC motor, 12 mm diameter, 6V/12V, 15rpm — commonly sold as GA12 N20 or N30. See note below.
+- 3x 623 bearings
 - 2x 6x3 mm magnets (Voron standard size)
-- 12x heat-set insert M3x5x4 (Voron standard size)
+- 4x heat-set insert M3x5x4 (Voron standard size)
 
 **M3 hardware:**
 
 - 1x M3 nut
-- 1x M3 grub screw
-- 8x M3x8 SHCS
+- 1x M3x6 set screw
 - 1x M3x16 SHCS
-- 1x M3x20 SHCS
 - 2x M3x20 FHCS
+- 1x M3x30 SHCS
 
-If your board supports 5V on fan outputs, you may use a 6V motor. If only 24V is available, use a 12V motor with <50% PWM.\
-Initial testing shows optimal belt speed under load is 2–12rpm, so even a 15rpm motor may suffice. PWM can reduce speed to \~5–10% of rated speed.
+**AT mount hardware**
+Applies to Voron Trident or similar printer together with modified (shorter) AT mount files  
+- 2x heat-set insert M3x5x4 (Voron standard size)
+- 2x M3 nyloc nut
+- 2x M3x8 SHCS
+- 1x M3x35 SHCS (you can use M3x30 if you have trouble getting it)
+- 1x M3x25 SHCS
+
+If your board supports 5V on fan outputs, you may use a 6V motor. If only 24V is available, use a 12V motor with <50% PWM.  
+Initial testing shows optimal belt speed under load is 2–12rpm, so a 15rpm seems to be ok. PWM can reduce speed to \~5–10% of rated speed. 30rpm and 50rpm motors also seem to be usable
 
 # Build Instructions
 
