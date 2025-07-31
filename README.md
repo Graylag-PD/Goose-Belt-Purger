@@ -4,10 +4,9 @@ An alternative to blob-producing purging routines and devices, or traditional pu
 Originally designed for the Voron Trident, but small and light enough to be adapted for other printers.
 
   
-![](/Assets/IMG20250603203242_crop.jpg)
+![](/Assets/GBP_mirrored.jpg)
   
-Currently in an early Alpha state — proven as a functional concept that can be integrated into a printer, but lacking extensive testing to demonstrate long-term viability and effectiveness. Major refinements and redesigns are expected.\
-**DO NOT SHARE** this project or any information about it without prior consent.
+Currently in Beta testing — proven as a functional design, but can have unexpected issues and design might change any time. You can share it with your friends, but make sure to let them know about the beta status. 
 
 
 # About
@@ -36,10 +35,10 @@ One pulley is driven by a cheap miniature DC motor with a gearbox.  A 50rpm or s
 
 The other pulley spins freely on a tilting arm. The arm pivots on a bearing around the motor shaft and is pushed upward by a pair of magnets acting as springs. The arm's purpose is to press against the nozzle but move away to avoid collisions with the nozzle or printhead.
 
-GBP is mounted using a Armored Turtle brush mount. You can design your own mount and connect it with AT mount styled dovetails.
+GBP is mounted using an Armored Turtle brush mount or universal Klicky style mount. But you can also design your own mount and connect it with AT mount styled dovetails.
 
 # Bill of Materials (BOM)
-
+## Purger
 - 1x Silicone wristband (12 mm wide, 200 mm circumference)
 - 1x DC motor, 12 mm diameter, 6V/12V, 15rpm — commonly sold as GA12 N20 or N30. See note below.
 - 3x 623 bearings
@@ -54,7 +53,18 @@ GBP is mounted using a Armored Turtle brush mount. You can design your own mount
 - 2x M3x20 FHCS
 - 1x M3x30 SHCS
 
-**AT mount hardware**
+**Electrical components:**
+- Schottky diode 1A (e.g. 1N5819) - For 5V or 12V supply voltage
+or
+- Schottky diode 2A (e.g. 1N5820) - For 24V supply voltage together with 12V motor
+- Resistor 47R
+- Ceramic capacitor 10 nF, 50V 
+
+If your board supports 5V on fan outputs, you may use a 6V motor. If only 24V is available, use a 12V motor with <50% PWM.  
+Initial testing shows optimal belt speed under load is 2–12rpm, so the 15rpm seems to be ok. PWM can reduce speed to \~5–10% of rated speed. 30rpm and 50rpm motors also seem to be usable  
+
+## Mounts
+**AT mount**
 Applies to Voron Trident or similar printer together with modified (shorter) AT mount files  
 - 2x heat-set insert M3x5x4 (Voron standard size)
 - 2x M3 nyloc nut
@@ -62,8 +72,11 @@ Applies to Voron Trident or similar printer together with modified (shorter) AT 
 - 1x M3x35 SHCS (you can use M3x30 if you have trouble getting it)
 - 1x M3x25 SHCS
 
-If your board supports 5V on fan outputs, you may use a 6V motor. If only 24V is available, use a 12V motor with <50% PWM.  
-Initial testing shows optimal belt speed under load is 2–12rpm, so a 15rpm seems to be ok. PWM can reduce speed to \~5–10% of rated speed. 30rpm and 50rpm motors also seem to be usable
+**Klicky style mount**
+Universal solution  
+- 8x heat-set insert M3x5x4 (Voron standard size)
+- 8x M3x8 SHCS
+
 
 # Build Instructions
 
@@ -118,9 +131,8 @@ This is an early-stage mod and hasn't been extensively tested. Known and unknown
 
 - Limited motor lifespan due to mechanical wear
 - Motor overheating
-- Belt burning
+- Belt thermal degradation
 - Frame deformation due to heat or tension
-- Belt slipping
 - Poor purge adhesion or debris returning to the nozzle
 - Print failures or damage from stray purged filament
 
@@ -131,10 +143,5 @@ This is an early-stage mod and hasn't been extensively tested. Known and unknown
 - Creation of a black hole
 - Other unforeseen consequences
 
-# Future Tasks and Ideas
-
-Currently, the GBP does not manage purged filament — waste simply falls into the printer. Users are expected to provide their own waste bins. For wider adoption, a reference design for waste containment will be necessary. GBP should support a variety of bin designs.
-
-Another issue is waste volume efficiency. The current default purge lines are relatively inefficient when allowed to fall freely. One possible solution is a shredder or cutter to break waste into pellets. No specific design exists yet.
 
 

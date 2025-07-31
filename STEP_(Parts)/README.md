@@ -1,5 +1,11 @@
 # Instructions for printing
-Use standard Voron print settings. Recommended material is ABS/ASA. Parts are oriented for print. No supports are required, deflector has integrated support.
+Use standard Voron print settings (see below). Recommended material is ABS/ASA. Parts are oriented for print. No supports are required, deflector has integrated support.  
+
+Layer height: 0,2 mm  
+Extrusion width: 0,4 mm  
+Infill: 40%  
+Wall count: 4  
+Solid top/bottom layers: 5  
 
 # Which parts to print
 **GBP_Frame**  
@@ -17,10 +23,5 @@ Use standard Voron print settings. Recommended material is ABS/ASA. Parts are or
 **GBP-Idler(+ 0)** - Basic version of idler. Designed under assumption, that arm is perfectly perpendicular to motor axis and that it does not flex. If your wristband tends to walk towards motor, use this one. 
 **GBP-Idler(+ 3,0)** - Extra offseted version of idler. If your wristband tends to walk towards bed, try this one.  
 
-# Armored Turtle brush mount
-Following applies to Voron Trident and other similar printers. GBP requires about 10 mm shorter (in horizontal direction) version of AT brush mount to clear bed.  
-If you have other printer, you will need to experiment. However please note, that GBP is fully compatible with default AT brush mount (connection by dovetails)  
-**ATmount_front_arm:base_(GBP)**  
-**ATmount_front_arm_slide_(GBP)**  
-**AT_Brush_mount/mount_upper**  
-**AT_Brush_mount/mount_lower**  
+# Mounts
+Select the appropriate files from Mounts folder, depending on your printer 
