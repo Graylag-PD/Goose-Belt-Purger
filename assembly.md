@@ -2,8 +2,10 @@
 
 ## Preparation steps
 a) Identify, if your board has protective features, i.e. schottky flyback diode and RC snubber. If not or you are in doubt, you will have to add them yourself to motor terminals.  
+  
 ![](/Assets/Schottky-Octopus.jpg)  
-* Example of BTT Octopus with Schottky diode on board *  
+_Example of BTT Octopus with Schottky diode on board_  
+  
 b) Install heatset inserts into **GBP_Arm** (1x), **GBP_Idler(+#)** (1x) and **GBP_Deflector_(long/short)** (2x). If you plan to use an AT style mount, you can also install inserts in **mount_upper** (2x)  
 c) Remove integrated support of **GBP_Deflector_(long/short)**. Grab the small bridging element in the middle with small pliers and remove it with twisting motion. It should easily and cleanly detach.   
 
@@ -12,8 +14,10 @@ c) Remove integrated support of **GBP_Deflector_(long/short)**. Grab the small b
   **_1a._** Correct polarity of the motor is needed. Output shaft of the motor should be turning CCW (or CW if you printed mirrored version). If you can, test the polarity beforehand. In case the motor spins other way, switch the wires. If you are not adding flyback diode, you can reverse them later on in connector. If you are adding flyback, you will need to revert them directly on the motor.  
   **_1b._** Schottky flyback diode has a set polarity and you need to solder its cathode to the motor terminal where positive voltage (+) wire is connected. Cathode is usually marked with a colour stripe. Other end of diode shall go directly to the other motor terminal. Double check the polarity, because doing this wrong may overload and damage your control board.  
   **_1c._** RC snubber is formed of a capacitor and a resistor. One leg of each component shall be soldered together (in series) and other legs to the motor terminals (one resistor leg to one motor terminal, one capacitor leg to other motor terminal). RC snubber does not have set polarity and it does not matter which way around do you solder it.  
+   
 ![](/Assets/snubber.jpg)  
-* Example of snubber *  
+_Example of snubber_
+   
 2. Insert the motor to a slot in **GBP_Frame**. It should fit tightly, but not deform the part. Depending on your gearbox configuration you may have some play in axial direction. Try to place your motor in such a way, that the face with output shaft  is as flush with frame as possible.  
 3. Clamp the motor from top with **GBP_Motor_cover**, push through 2x M3x20 FHCS screws, add **GBP_Deflector_(long/short)** to bottom and screw it together.  
 4. Insert two of the bearings and one magnet into **GBP_-Arm**. Bearings should be inserted from flat side (one with logo on it). Polarity of the magnet does not matter. If it is too loose, you may fix it with a drop of glue, but this should generally not be needed. Magnets act as a spring pulling arm away from mount and as such are being pushed into a pocket.  
