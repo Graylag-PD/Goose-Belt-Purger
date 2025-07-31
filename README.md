@@ -136,12 +136,4 @@ This is an early-stage mod and hasn't been extensively tested. Known and unknown
 - Poor purge adhesion or debris returning to the nozzle
 - Print failures or damage from stray purged filament
 
-**Unexpected but possible risks:**
-
-- Goose death
-- House fire
-- Creation of a black hole
-- Other unforeseen consequences
-
-
 
