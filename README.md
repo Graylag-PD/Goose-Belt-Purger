@@ -4,7 +4,7 @@ An alternative to blob-producing purging routines and devices, or traditional pu
 Originally designed for the Voron Trident, but small and light enough to be adapted for other printers.
 
   
-![](/Assets/GBP_mirrored.jpg)
+![](/Assets/GBP-mirrored.jpg)
   
 Currently in Beta testing — proven as a functional design, but can have unexpected issues and design might change any time. You can share it with your friends, but make sure to let them know about the beta status. 
 
@@ -54,9 +54,9 @@ GBP is mounted using an Armored Turtle brush mount or universal Klicky style mou
 - 1x M3x30 SHCS
 
 **Electrical components:**
-- Schottky diode 1A (e.g. 1N5819) - For 5V or 12V supply voltage
+- Schottky diode 1A (e.g. 1N5819) - For 5V or 12V supply voltage  
 or
-- Schottky diode 2A (e.g. 1N5820) - For 24V supply voltage together with 12V motor
+- Schottky diode 2A (e.g. 1N5820) - For 24V supply voltage together with 12V motor  
 - Resistor 47R
 - Ceramic capacitor 10 nF, 50V 
 
