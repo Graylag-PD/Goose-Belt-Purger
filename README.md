@@ -64,7 +64,7 @@ If your board supports 5V on fan outputs, you may use a 6V motor. If only 24V is
 Initial testing shows optimal belt speed under load is 2–12rpm, so the 15rpm seems to be ok. PWM can reduce speed to \~5–10% of rated speed. 30rpm and 50rpm motors also seem to be usable  
 
 ## Mounts
-**AT mount**
+**AT mount**  
 Applies to Voron Trident or similar printer together with modified (shorter) AT mount files  
 - 2x heat-set insert M3x5x4 (Voron standard size)
 - 2x M3 nyloc nut
@@ -72,7 +72,7 @@ Applies to Voron Trident or similar printer together with modified (shorter) AT 
 - 1x M3x35 SHCS (you can use M3x30 if you have trouble getting it)
 - 1x M3x25 SHCS
 
-**Klicky style mount**
+**Klicky style mount**  
 Universal solution  
 - 8x heat-set insert M3x5x4 (Voron standard size)
 - 8x M3x8 SHCS
