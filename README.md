@@ -6,6 +6,8 @@ Originally designed for the Voron Trident, but small and light enough to be adap
   
 ![](/Assets/Purgers_small.jpg)  
   
+See also [YouTube video](https://youtu.be/MWTFuGqhi_c) of purger in action.
+  
 Currently in Beta testing — proven as a functional design, but can have unexpected issues and design might change any time.  
   
 If you have any questions, you can visit my [Discord server](https://discord.gg/zYc39Neu). 
