@@ -10,7 +10,9 @@ See also [YouTube video](https://youtu.be/MWTFuGqhi_c) of purger in action.
   
 Currently in Beta testing — proven as a functional design, but can have unexpected issues and design might change any time.  
   
-If you have any questions, you can visit my [Discord server](https://discord.gg/zYc39Neu). 
+If you have any questions, you can visit my [Discord server](https://discord.gg/zYc39Neu).  
+  
+You can also find GBP on [Printables](https://www.printables.com/model/1371713-goose-belt-purger-gbp)
 
 # About
 Like many makers, I've been fascinated by single-nozzle multicolor/multimaterial printing. But like many, I hate purge towers. They can be large, ugly, and take up valuable print bed space. This is why I was intrigued by the Blobifier — but there are several issues. First, I use a Voron Trident, which isn't compatible. While there are adaptations of the Blobifier concept for the Trident, none have gained significant traction. Second, both the original Blobifier and its Trident adaptations generally share the drawback that each purge requires toolhead parking near the bed edge, blocking part of the bed and potentially risking collisions. Third, the produced blobs are volumetrically inefficient. Even though the blobs are relatively compact, their shape means they can't utilize the waste bin space effectively. This is even worse with the loose coil "poops" produced by some printers.
@@ -34,7 +36,10 @@ The belt moves along two printed pulleys. How does it stay in place without flan
 One pulley is driven by a cheap miniature DC motor with a gearbox.  A 50rpm or slower version is recommended, up to 15rpm if you want really thick extrusions. &#x20;
 
 > [!WARNING]\
-> Be sure to read the "Electrical connection" section carefully. There's a real risk of permanently damaging your controller board!
+> Motor is an inductive component. Skipping the recommended protection (e.g. flyback diode) can cause voltage spikes and permanent damage to your controller.  
+>  
+>Read the “Electrical connection” section and install all safety components.  
+>Use at your own risk.  
 
 The other pulley spins freely on a tilting arm. The arm pivots on a bearing around the motor shaft and is pushed upward by a pair of magnets acting as springs. The arm's purpose is to press against the nozzle but move away to avoid collisions with the nozzle or printhead.
 
