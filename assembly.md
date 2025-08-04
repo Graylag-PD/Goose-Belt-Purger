@@ -1,7 +1,7 @@
 # Goose Belt Purger assembly
 
 ## Preparation steps
-a) Identify, if your board has protective features, i.e. schottky flyback diode and RC snubber. If not or you are in doubt, you will have to add them yourself to motor terminals.  
+a) Identify, if your board has protective flyback diodes. You can check the comprehensive list [here](board_list.md),. If not or you are in doubt, you will have to add it yourself to motor terminals. At this moment there are no known boards with RC snubber integrated, so expect to add snubber either way.
   
 ![](/Assets/Schottky-Octopus.jpg)  
 _Example of BTT Octopus with Schottky diode on board_  
@@ -41,4 +41,7 @@ If you decide to use Klicky style mount or other kind of mount, assemble and tun
 
 ## Troubleshooting and FAQ
 - My wristband shifts partially/fully off the pulleys towards bed - this is most likely due to bad tolerance of a bearings holding the idler and/or missing M3x16 SHCS screw. Some cheaper bearings allow the idler or arm to be pulled to the side by a band tension, which causes this shifting off. If you can, use a better bearing. Otherwise try using **GBP_Idler(+3,0)**  
-- My wristband shifts too far in, towards motor - less common, could be due to arm being warped. Try using **GBP_Idler(+0)**  
+- My wristband shifts too far in, towards motor - less common, could be due to arm being warped. Try using **GBP_Idler(+0)**
+
+
+
