@@ -118,7 +118,7 @@ Although this should still work, diode could be damaged over long time, especial
   </tr>
 </table>
 
-## MKS
+## Fysetc
 <table>
   <tr>
     <th>Board identification</th>
@@ -127,48 +127,65 @@ Although this should still work, diode could be damaged over long time, especial
     <th>Note</th>
   </tr>
   <tr>
-    <td>Monster8 V1/V2</td>
-    <td>see note</td>
-    <td>see note</td>
-    <td>1A rectifier diode</td>
+    <td>Spider King</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>Diode type not specified, presumed to by 1A Schottky</td>
   </tr>
   <tr>
-    <td>OWL V1</td>
-    <td>see note</td>
-    <td>see note</td>
-    <td>Diode type not documented, presumed to be 1A rectifier diode</td>
-  </tr>
-  <tr>
-    <td>SKIPR V1</td>
-    <td>see note</td>
-    <td>see note</td>
-    <td>Diode type not documented, presumed to be 1A rectifier diode</td>
-  </tr>
-  <tr>
-    <td>Robin (All versions)</td>
+    <td>Spider Pro</td>
+    <td>Yes</td>
     <td>No</td>
-    <td>No</td>
-    <td>Includes Robin, Robin2, Pro, Mini, Nano1/2/3, Lite1/2/3, E3/E3D</td>
+    <td>1A Schottky</td>
   </tr>
   <tr>
-    <td>Eagle</td>
+    <td>Spider V2.3/V3/V3 H7</td>
+    <td>Yes</td>
+    <td>No</td>
+    <td>1A Schottky</td>
+  </tr>
+  <tr>
+    <td>Spider V1/V2.2</td>
     <td>No</td>
     <td>No</td>
     <td></td>
   </tr>
   <tr>
-    <td>TinyBee</td>
+    <td>Cheetah V1/2/3</td>
     <td>No</td>
     <td>No</td>
     <td></td>
   </tr>
-    <tr>
-    <td>SBASE/SGEN</td>
+  <tr>
+    <td>Cheetah Mix</td>
     <td>No</td>
     <td>No</td>
-    <td>Includes SGEN_L V1/2 </td>
+    <td></td>
   </tr>
-
+  <tr>
+    <td>Catalyst Main Board</td>
+    <td>No</td>
+    <td>No</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>S6</td>
+    <td>No</td>
+    <td>No</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>R4</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>1A Schottky</td>
+  </tr> 
+  <tr>
+    <td>R4</td>
+    <td>Yes</td>
+    <td>Yes</td>
+    <td>1A Schottky</td>
+  </tr> 
 </table>
 
 ## Mellow
@@ -242,7 +259,7 @@ Mellow documentation can be difficult to understand. For some boards they drawed
   </tr>
 </table>
 
-## Fysetc
+## MKS
 <table>
   <tr>
     <th>Board identification</th>
@@ -251,63 +268,71 @@ Mellow documentation can be difficult to understand. For some boards they drawed
     <th>Note</th>
   </tr>
   <tr>
-    <td>Spider King</td>
-    <td>Yes</td>
-    <td>Yes</td>
-    <td>Diode type not specified, presumed to by 1A Schottky</td>
+    <td>Monster8 V1/V2</td>
+    <td>see note</td>
+    <td>see note</td>
+    <td>1A rectifier diode</td>
   </tr>
   <tr>
-    <td>Spider Pro</td>
+    <td>OWL V1</td>
+    <td>see note</td>
+    <td>see note</td>
+    <td>Diode type not documented, presumed to be 1A rectifier diode</td>
+  </tr>
+  <tr>
+    <td>SKIPR V1</td>
+    <td>see note</td>
+    <td>see note</td>
+    <td>Diode type not documented, presumed to be 1A rectifier diode</td>
+  </tr>
+  <tr>
+    <td>Robin (All versions)</td>
+    <td>No</td>
+    <td>No</td>
+    <td>Includes Robin, Robin2, Pro, Mini, Nano1/2/3, Lite1/2/3, E3/E3D</td>
+  </tr>
+  <tr>
+    <td>Eagle</td>
+    <td>No</td>
+    <td>No</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>TinyBee</td>
+    <td>No</td>
+    <td>No</td>
+    <td></td>
+  </tr>
+    <tr>
+    <td>SBASE/SGEN</td>
+    <td>No</td>
+    <td>No</td>
+    <td>Includes SGEN_L V1/2 </td>
+  </tr>
+
+</table>
+
+## LDO
+<table>
+  <tr>
+    <th>Board identification</th>
+    <th>Diode on fan outputs?</th>
+    <th>Diode on power outputs?</th>
+    <th>Note</th>
+  </tr>
+  <tr>
+    <td>Leviathan V1.3</td>
     <td>Yes</td>
     <td>No</td>
     <td>1A Schottky</td>
   </tr>
   <tr>
-    <td>Spider V2.3/V3/V3 H7</td>
-    <td>Yes</td>
-    <td>No</td>
-    <td>1A Schottky</td>
-  </tr>
-  <tr>
-    <td>Spider V1/V2.2</td>
+    <td>Leviathan V1.2</td>
     <td>No</td>
     <td>No</td>
     <td></td>
   </tr>
-  <tr>
-    <td>Cheetah V1/2/3</td>
-    <td>No</td>
-    <td>No</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Cheetah Mix</td>
-    <td>No</td>
-    <td>No</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Catalyst Main Board</td>
-    <td>No</td>
-    <td>No</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>S6</td>
-    <td>No</td>
-    <td>No</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>R4</td>
-    <td>Yes</td>
-    <td>Yes</td>
-    <td>1A Schottky</td>
-  </tr> 
-  <tr>
-    <td>R4</td>
-    <td>Yes</td>
-    <td>Yes</td>
-    <td>1A Schottky</td>
-  </tr> 
+</table>
+
+
 </table>
