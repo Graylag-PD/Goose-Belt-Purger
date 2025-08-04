@@ -97,7 +97,7 @@ Connect the DC motor to any free power output on your controller board, preferab
 > [!IMPORTANT]\
 > The DC motor is a strong inductive load and will generate large voltage spikes, which can destroy your board's MOSFET or even the MCU if untreated. At minimum, use a properly sized Schottky flyback diode across the board output. I also recommend an RC snubber on the motor terminals.
 >
-> Some boards (e.g., BTT Octopus) already include protection diodes. Others rely only on the MOSFET's internal diode, which is usually insufficient. Consult your board's schematic. When unsure, ask someone.
+> Some boards (e.g., BTT Octopus) already include protection diodes. Others rely only on the MOSFET's internal diode, which is usually insufficient. You can check comprehensive table [here](board_list.md), or consult your board's schematic.  When unsure, ask someone.
 >
 > For the RC snubber, I used a 47 Ω resistor and a 10 nF, 50V ceramic capacitor. Solder one leg of each component together, then solder the free legs to the motor terminals. This configuration dampens voltage spikes while preserving PWM response. You may use a larger capacitor for extra safety, but note that increased capacitance degrades PWM response. Avoid using a capacitor alone (without resistor), as this can cause resonance and make things worse.
 
