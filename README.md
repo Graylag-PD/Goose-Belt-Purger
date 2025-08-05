@@ -111,15 +111,15 @@ If you're using HappyHare or a similar tool, configure it so it doesn't return t
 
 Once set up, the purge routine can be triggered by running the G-code macro:
 
-- `goose_purge VOLUME=###` or
-- `goose_purge LENGTH=###`\
-  where `###` is the purge volume in mm³ or length in mm. If both are provided, `LENGTH` takes precedence. If neither is provided, the macro runs without extruding.
+- `goose_purge PURGE_VOLUME=###` or
+- `goose_purge PURGE_LENGTH=###`\
+  where `###` is the purge volume in mm³ or length in mm. If both are provided, `PURGE_LENGTH` takes precedence. If neither is provided, the macro runs according default value variable configured within the macro.
 
 # Slicer Configuration
 
 Place the `goose_purge` macro at the beginning of your start G-code where you'd normally place a prime line. For tool changes, insert it just after the `T# ;` command.
 
-Note that not all slicers support passing purge parameters. In OrcaSlicer, you can use `goose_purge LENGTH=[flush_length]`. In PrusaSlicer, the volume must be hardcoded.
+Note that not all slicers support passing purge parameters. In OrcaSlicer, you can use `goose_purge PURGE_LENGTH=[flush_length]`. In PrusaSlicer, the volume must be hardcoded.
 
 # Tips and Observations
  
