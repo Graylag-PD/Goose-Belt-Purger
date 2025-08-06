@@ -12,7 +12,7 @@ Currently in Beta testing — proven as a functional design, but can have unexpe
   
 If you have any questions, you can visit my [Discord server](https://discord.gg/zYc39Neu).  
   
-You can also find GBP on [Printables](https://www.printables.com/model/1371713-goose-belt-purger-gbp)
+You can also find GBP on [Printables](https://www.printables.com/model/1371713-goose-belt-purger-gbp). You can support us there by liking and uploading yout 'makes'
 
 # About
 Like many makers, I've been fascinated by single-nozzle multicolor/multimaterial printing. But like many, I hate purge towers. They can be large, ugly, and take up valuable print bed space. This is why I was intrigued by the Blobifier — but there are several issues. First, I use a Voron Trident, which isn't compatible. While there are adaptations of the Blobifier concept for the Trident, none have gained significant traction. Second, both the original Blobifier and its Trident adaptations generally share the drawback that each purge requires toolhead parking near the bed edge, blocking part of the bed and potentially risking collisions. Third, the produced blobs are volumetrically inefficient. Even though the blobs are relatively compact, their shape means they can't utilize the waste bin space effectively. This is even worse with the loose coil "poops" produced by some printers.
@@ -103,23 +103,8 @@ Connect the DC motor to any free power output on your controller board, preferab
 
 I confirmed the effectiveness of these measures with an oscilloscope, but I can't guarantee that no fast transients were missed (e.g., during PWM changes). Data is still limited, so proceed with care and understand what you're doing.
 
-# Software Configuration
-
-A configuration file with a macro is available. See comments in the file and adapt it to your printer. Future refinements are expected.
-
-If you're using HappyHare or a similar tool, configure it so it doesn't return to the previous or next G-code position.
-
-Once set up, the purge routine can be triggered by running the G-code macro:
-
-- `goose_purge VOLUME=###` or
-- `goose_purge LENGTH=###`\
-  where `###` is the purge volume in mm³ or length in mm. If both are provided, `LENGTH` takes precedence. If neither is provided, the macro runs without extruding.
-
-# Slicer Configuration
-
-Place the `goose_purge` macro at the beginning of your start G-code where you'd normally place a prime line. For tool changes, insert it just after the `T# ;` command.
-
-Note that not all slicers support passing purge parameters. In OrcaSlicer, you can use `goose_purge LENGTH=[flush_length]`. In PrusaSlicer, the volume must be hardcoded.
+# Software and Slicer Configuration
+For more information about provided configuration file, slicer configuration and integration into AFC or Happy Hare, please look [here](sw_configuration.md).
 
 # Tips and Observations
  
