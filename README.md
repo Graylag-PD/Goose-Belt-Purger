@@ -103,8 +103,10 @@ Connect the DC motor to any free power output on your controller board, preferab
 
 I confirmed the effectiveness of these measures with an oscilloscope, but I can't guarantee that no fast transients were missed (e.g., during PWM changes). Data is still limited, so proceed with care and understand what you're doing.
 
+
 # Software and Slicer Configuration
 For more information about provided configuration file, slicer configuration and integration into AFC or Happy Hare, please look [here](sw_configuration.md).
+
 
 # Tips and Observations
  
