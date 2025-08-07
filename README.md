@@ -12,7 +12,7 @@ Currently in Beta testing — proven as a functional design, but can have unexpe
   
 If you have any questions, you can visit my [Discord server](https://discord.gg/zYc39Neu).  
   
-You can also find GBP on [Printables](https://www.printables.com/model/1371713-goose-belt-purger-gbp). You can support us there by liking and uploading yout 'makes'
+If you find this useful, a like or a make on [Printables](https://www.printables.com/model/1371713-goose-belt-purger-gbp) helps others discover and trust the design.
 
 # About
 Like many makers, I've been fascinated by single-nozzle multicolor/multimaterial printing. But like many, I hate purge towers. They can be large, ugly, and take up valuable print bed space. This is why I was intrigued by the Blobifier — but there are several issues. First, I use a Voron Trident, which isn't compatible. While there are adaptations of the Blobifier concept for the Trident, none have gained significant traction. Second, both the original Blobifier and its Trident adaptations generally share the drawback that each purge requires toolhead parking near the bed edge, blocking part of the bed and potentially risking collisions. Third, the produced blobs are volumetrically inefficient. Even though the blobs are relatively compact, their shape means they can't utilize the waste bin space effectively. This is even worse with the loose coil "poops" produced by some printers.
