@@ -1,4 +1,5 @@
 # Configuration file and macro configuration
+Applies to configuration file v0.7.1. If you have any kind of issues, check first, if you are on newest available version.
 
 ## Instalation of macro into Klipper
 Copy the `goose_belt.cfg` file into Klipper configuration file and add `[include goose_belt.cfg]` into your `printer.cfg`. No additional steps are needed
@@ -57,7 +58,9 @@ https://github.com/moggieuk/Happy-Hare/wiki/Tip-Forming-and-Purging
 
 Also please note, that even if your Happy Hare is configured correctly, it relies on slicer to pass the purging matrix correctly. While this assumption seems to be met for Prusa Slicer, it does not seem so for Orca Slicer. If you use Orca Slicer, consider generating purge volume matrix from toolmap, using custom purge volume matrix or operating GBP in standalone mode.  
 
-As for actual integration, this is very straightforward and the only thing you need to do is edit `mmu_macro_vars.cfg` by setting variable `variable_user_post_load_extension : 'GOOSE_PURGE PURGE_VOLUME={printer.mmu.toolchange_purge_volume}'`.  
+As for actual integration, this is very straightforward and the only thing you need to do is edit `mmu_macro_vars.cfg` by setting variable `variable_user_post_load_extension : '_GOOSE_PURGE_HH'` without any parameters.   
+  
+Note, that we are not calling directly `GOOSE_PURGE` macro, but instead its wrapper `_GOOSE_PURGE_HH`. This is due to how Klipper resolves macros and passes parameters.
   
 Happy Hare does not have any wiping logic embedded, so if you want automatic wiping execution after purge, consider adding your custom wiping macro to the `variable_user_end_script:'` in `goose_belt.cfg`.
 
