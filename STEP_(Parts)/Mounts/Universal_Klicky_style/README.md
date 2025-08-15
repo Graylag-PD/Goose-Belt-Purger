@@ -1,1 +1,0 @@
-Universal mounting solution based on Klicky probe adjustable dock mount. 
