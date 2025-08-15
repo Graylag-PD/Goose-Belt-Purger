@@ -4,7 +4,7 @@ An alternative to blob-producing purging routines and devices, or traditional pu
 Originally designed for the Voron Trident, but small and light enough to be adapted for other printers.
 
   
-![](/Assets/Purgers_small.jpg)  
+![](/Assets/goose_small.jpg) ![](/Assets/IMG20250812205713_cropped_small.jpg)  
   
 See also [YouTube video](https://youtu.be/MWTFuGqhi_c) of purger in action.
   
@@ -51,15 +51,21 @@ GBP is mounted using an Armored Turtle brush mount or universal Klicky style mou
 - 1x DC motor, 12 mm diameter, 6V/12V, 15rpm — commonly sold as GA12 N20 or N30. See note below.
 - 3x 623 bearings
 - 2x 6x3 mm magnets (Voron standard size)
-- 4x heat-set insert M3x5x4 (Voron standard size)
+- 3x heat-set insert M3x5x4 (Voron standard size)
+  
+If your board supports 5V on fan outputs, you may use a 6V motor. If only 24V is available, use a 12V motor with <50% PWM.  
+Initial testing shows optimal belt speed under load is 2–12rpm, so the 15rpm seems to be ok. PWM can reduce speed to \~5–10% of rated speed. 30rpm and 50rpm motors also seem to be usable  
 
 **M3 hardware:**
 
 - 1x M3 nut
+- 1x M3 nylock nut*
 - 1x M3x6 set screw
-- 1x M3x16 SHCS
+- 1x M3x20 SHCS*
 - 2x M3x20 FHCS
 - 1x M3x30 SHCS
+  
+*) If you have trouble getting a M3 nyloc, you can instead use HSI variant of arm - replace nylock nut for one more heat-set insert, M3x16 SHCS instead of M3x20 SHCS and get some threadlocker  
 
 **Electrical components:**
 - Schottky diode 1A (e.g. 1N5819) - For 5V or 12V supply voltage  
@@ -67,9 +73,8 @@ or
 - Schottky diode 2A (e.g. 1N5820) - For 24V supply voltage together with 12V motor  
 - Resistor 47R
 - Ceramic capacitor 10 nF, 50V 
-
-If your board supports 5V on fan outputs, you may use a 6V motor. If only 24V is available, use a 12V motor with <50% PWM.  
-Initial testing shows optimal belt speed under load is 2–12rpm, so the 15rpm seems to be ok. PWM can reduce speed to \~5–10% of rated speed. 30rpm and 50rpm motors also seem to be usable  
+  
+If you don't like the idea of soldering those parts, you can also get yourself a **[MicroFlip](https://github.com/Trondle-Embeeded-Systems/MicroFlip)** board, which already has everything.
 
 ## Mounts
 **AT mount**  
@@ -103,7 +108,7 @@ Connect the DC motor to any free power output on your controller board, preferab
 
 I confirmed the effectiveness of these measures with an oscilloscope, but I can't guarantee that no fast transients were missed (e.g., during PWM changes). Data is still limited, so proceed with care and understand what you're doing.
 
-If you want some better alternative to manually soldering components to motor, see amazing [MicroFlip](https://github.com/Trondle-Embeeded-Systems/MicroFlip) project by Ntrondle. You can make it yourself, or check our Discord if anyone has any boards for sale. 
+If you want some better alternative to manually soldering components to motor, see amazing [MicroFlip](https://github.com/Trondle-Embeeded-Systems/MicroFlip) project by Ntrondle. You can make it yourself, or check our Discord if anyone has any boards for sale. Keep in mind, that MicroFlip is **not** developed as part of this project. If you like it and would like to support its creator, do so on his GitHub page.  
 
 # Software and Slicer Configuration
 For more information about provided configuration file, slicer configuration and integration into AFC or Happy Hare, please look [here](sw_configuration.md).
@@ -113,23 +118,13 @@ For more information about provided configuration file, slicer configuration and
  
 Extrude onto the smooth inner side of the wristband. You can try the outer side, but adhesion is generally worse and requires an unembossed, unprinted band — which is surprisingly hard to find. The inner surface sticks well, even without direct nozzle contact, while the outer side requires pressure that magnets alone can't provide.
 
-Adhesion heavily depends on belt speed. If filament doesn't stick, slow the belt. Once adhesion starts, the extruded line tends to pull more material from the nozzle. A part cooling fan can help, though this isn't yet included in the macro.
+Adhesion heavily depends on belt speed. If filament doesn't stick, slow the belt. Once adhesion starts, the extruded line tends to pull more material from the nozzle. 
+  
+Adhesion is also strongly dependant on filament drynes. Wet filament tends to curl up and does not stick to belt as easilly.
 
 The macro splits the purge into short "toothpicks" or pellets to improve waste volume efficiency.
 
 Initial testing shows optimal belt speed is 2–12rpm (roughly 1.8–11 mm/s or 108–660 mm/min). The easiest way to measure speed is to mark a spot on a pulley, start a stopwatch, and time 10 full revolutions.
 
-# Risks
-
-This is an early-stage mod and hasn't been extensively tested. Known and unknown risks exist. If issues arise, please report them.
-
-**Known risks:**
-
-- Limited motor lifespan due to mechanical wear
-- Motor overheating
-- Belt thermal degradation
-- Frame deformation due to heat or tension
-- Poor purge adhesion or debris returning to the nozzle
-- Print failures or damage from stray purged filament
-
+Don't be afraid to experiment with the macro parameters. Every printer is unique, so expect to tune it up for a some time untill you hit the 'just right' zone.
 
