@@ -10,7 +10,7 @@ See also [YouTube video](https://youtu.be/MWTFuGqhi_c) of purger in action.
   
 Currently in Beta testing — proven as a functional design, but can have unexpected issues and design might change any time.  
   
-If you have any questions, you can visit my [Discord server](https://discord.gg/zYc39Neu).  
+If you have any questions, you can visit my [Discord server](https://discord.gg/mRbacPBT).  
   
 If you find this useful, a like or a make on [Printables](https://www.printables.com/model/1371713-goose-belt-purger-gbp) helps others discover and trust the design.
 
