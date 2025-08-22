@@ -6,7 +6,7 @@ Originally designed for the Voron Trident, but small and light enough to be adap
   
 ![](/Assets/goose_small.jpg) ![](/Assets/IMG20250812205713_cropped_small.jpg)  
   
-See also [YouTube video](https://youtu.be/MWTFuGqhi_c) of purger in action.
+See also our [promo video](https://youtu.be/ZBZhAEFlKdA) on YouTube, or slightly older [video](https://youtu.be/MWTFuGqhi_c) with more detailed depiction of purger in action.
   
 Currently in Beta testing — proven as a functional design, but can have unexpected issues and design might change any time.  
   
