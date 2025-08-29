@@ -6,11 +6,11 @@ Originally designed for the Voron Trident, but small and light enough to be adap
   
 ![](/Assets/goose_small.jpg) ![](/Assets/IMG20250812205713_cropped_small.jpg)  
   
-See also [YouTube video](https://youtu.be/MWTFuGqhi_c) of purger in action.
+See also our [promo video](https://youtu.be/ZBZhAEFlKdA) on YouTube, or slightly older [video](https://youtu.be/MWTFuGqhi_c) with more detailed depiction of purger in action.
   
 Currently in Beta testing — proven as a functional design, but can have unexpected issues and design might change any time.  
   
-If you have any questions, you can visit my [Discord server](https://discord.gg/zYc39Neu).  
+If you have any questions, you can visit my [Discord server](https://discord.gg/8a29q9gJb9).  
   
 If you find this useful, a like or a make on [Printables](https://www.printables.com/model/1371713-goose-belt-purger-gbp) helps others discover and trust the design.
 

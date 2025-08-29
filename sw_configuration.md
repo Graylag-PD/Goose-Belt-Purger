@@ -1,5 +1,5 @@
 # Configuration file and macro configuration
-Applies to configuration file v0.7.1. If you have any kind of issues, check first, if you are on newest available version.
+Applies to configuration file v0.7.1 or newer. If you have any kind of issues, check first, if you are on newest available version.
 
 ## Instalation of macro into Klipper
 Copy the `goose_belt.cfg` file into Klipper configuration file and add `[include goose_belt.cfg]` into your `printer.cfg`. No additional steps are needed
@@ -53,7 +53,7 @@ GBP is compatible with the default AFC method of passing the variable purge leng
 https://www.armoredturtle.xyz/docs/afc-klipper-add-on/features.html?h=variable+purge#variable-purge-length-on-filament-change. 
 
 ## Happy Hare integration
-Happy Hare takes rather complex approach to purging. Unlike other methods it does not rely on slicer to pass purge volume or length together with toolchange. Instead it works with internal purge volume matrix and further enhances it by adding colume of residual filament and cut tip fragment. It can get its purge volume matrix either from internal toolmap or from processing gcode metadata. Either way, for purging to work you need to make sure, that your instance of Happy Hare processes this data correctly. For more information, please visit Happy Hare documentation here:  
+Happy Hare takes rather complex approach to purging. Unlike other methods it does not rely on slicer to pass purge volume or length together with toolchange. Instead it works with internal purge volume matrix and further enhances it by adding volume of residual filament and cut tip fragment. It can get its purge volume matrix either from internal toolmap or from processing gcode metadata. Either way, for purging to work you need to make sure, that your instance of Happy Hare processes this data correctly. For more information, please visit Happy Hare documentation here:  
 https://github.com/moggieuk/Happy-Hare/wiki/Tip-Forming-and-Purging
 
 Also please note, that even if your Happy Hare is configured correctly, it relies on slicer to pass the purging matrix correctly. While this assumption seems to be met for Prusa Slicer, it does not seem so for Orca Slicer. If you use Orca Slicer, consider generating purge volume matrix from toolmap, using custom purge volume matrix or operating GBP in standalone mode.  
@@ -62,7 +62,7 @@ As for actual integration, this is very straightforward and the only thing you n
   
 Note, that we are not calling directly `GOOSE_PURGE` macro, but instead its wrapper `_GOOSE_PURGE_HH`. This is due to how Klipper resolves macros and passes parameters.
   
-Happy Hare does not have any wiping logic embedded, so if you want automatic wiping execution after purge, consider adding your custom wiping macro to the `variable_user_end_script:'` in `goose_belt.cfg`.
+Happy Hare does not have any wiping logic embedded, so if you want automatic wiping execution after purge, consider adding your custom wiping macro to the `variable_user_end_script:''` in `goose_belt.cfg`.
 
 ## Other filament management add-ons
 No other filament management add-ons are supported as of this moment. You are free to develop integration into other add-ons and if you do, we can list them here, however be prepared to support such solution. 
