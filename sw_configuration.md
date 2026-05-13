@@ -1,27 +1,31 @@
 # Configuration file and macro configuration
-Applies to configuration file v0.7.3 or newer. If you have any kind of issues, check first, if you are on newest available version.
-
-## Instalation of macro into Klipper
-Copy the `goose_belt.cfg` file into Klipper configuration file and add `[include goose_belt.cfg]` into your `printer.cfg`. No additional steps are needed
+Default control software is the [Goose Purge Macro](https://github.com/Graylag-PD/Goose-Purge-Macro). For details on installation, see there.  
+Information in this file apply to macro version v0.8.2 or newer. If you have any kind of issues, check first, if you are on newest available version.  
+  
+The old version of the macro (v0.7.3) remains within the Goose Belt Purger repository and is now considered a legacy solution. 
 
 ## Macro configuration
-Macro can be configured by changing its user accessible variables. See comments in the file and adapt it to your printer.  
+Macro can be configured by changing the variables in `goose_purge.cfg` file. See comments in the file and adapt it to your printer.  
 
 Once set up, the purge routine can be triggered by running the G-code macro:  
  - `GOOSE_PURGE PURGE_VOLUME=###`  
    or  
  - `GOOSE_PURGE PURGE_LENGTH=###`  
-where ### is the purge volume in mm³ or length in mm. If both are provided, PURGE_LENGTH takes precedence. If neither is provided, the macro runs according default value variable configured within the macro.
+where ### is the purge volume in mm³ or length in mm. If both are provided, they are added up. If neither is provided, the macro runs according default value variable configured within the macro.
 
 Below are the most common "chokepoints" for the new users:  
 ### Output pin definition
-This part is usually straight forward and the only difficulty may come from identifying correct MCU pin. For this you need to consult your board documenatation.  
+This part is usually straight forward and the only difficulty may come from identifying correct MCU pin(s). For this you need to consult your board documenatation.  
   
-There is hovewer a catch - although any fan output can be used, or in fact any output pin, not all pins are capable of a HW PWM and this may apply even to pins which should be HW PWM capable from chip design. 
+For a DC motor, use a fan output. There is hovewer a catch - although any fan output can be used, or in fact any output pin, not all pins are capable of a HW PWM and this may apply even to pins which should be HW PWM capable from chip design. 
 This is not a bug, but comes from the way Klipper is configured. If you run into situation, that everything is connected and configured correctly but the motor still does not activates, consider changing the output which you are using.  
 If for whatever reason you cannot use any other port, you may fall back to using the SW generated PWM, but be aware of the performance penalty this can mean.   
 One example of the pin which should work but does not is the PA8 on a STM32F446.
-
+  
+### Z axis strategy
+Applicable Z axis strategy depends on the purger mounting and printer type. For a Voron Trident (or similar) printers you should use "0" - no Z movement. For a Voron 2.4 and purger on the gantry you can use either strategy "0" or strategy "2". Later can help with pellets pilling up under the purger.  
+For a Voron 2.4 with the purger fixed on a frame, use strategy "1" - absolute Z position.
+  
 ### Staging and purging positions
 At first you should think about your purging position. In general you have two options - either purge directly on top of your idler pulley, or to purge on a free belt span (in between pulleys). If you are in doubt, start with purging position above the idler belt, as the pressure from the idler creates more stable conditions and it maximises the cooling time for the deposited material.  
 Purging on a free belt span is often used by more experienced users who aim to maximise purge thickness (to create short, thick pellets), as the belt flexes and adapts better to thick extrusions.  
@@ -37,7 +41,7 @@ Third value is the absolute lowest speed - this is the speed, at which the motor
 Once you find the value you are happy with, set it to the macro variables, restart the klipper and do the test run of the macro just to see, that everything works as expected. 
 
 ## Useful tips
-Tuning the variables "just right" can take many iterations and hitting that Save&Restart button every time can be very time consuming. Instead, you can edit your variables on the fly through terminal command `SET_GCODE_VARIABLE`, e.g. `SET_GCODE_VARIABLE MACRO=goose_purge VARIABLE=belt_pwm VALUE=0.33` to change the belt speed. You can even do that during print job - set up a test print that has a bunch of filament changes, then adjusted the variables live as you go. Because the way klipper queues up gocode, it may not take effect immediately so if you enter this while you're in the middle of a toolchange, you won't see the results until the next toolchange.  
+Tuning the variables "just right" can take many iterations and hitting that Save&Restart button every time can be very time consuming. Instead, you can edit your variables on the fly through terminal command `SET_GCODE_VARIABLE`, e.g. `SET_GCODE_VARIABLE MACRO=_GOOSE_PURGE_VARIABLES VARIABLE=belt_pwm VALUE=0.33` to change the belt speed. You can even do that during print job - set up a test print that has a bunch of filament changes, then adjusted the variables live as you go. Because the way klipper queues up gocode, it may not take effect immediately so if you enter this while you're in the middle of a toolchange, you won't see the results until the next toolchange.  
 Keep in mind this doesn't save the values to config file, so you will have to remember to set the values in the cfg file yourself. 
 
 ## GBP and other printer firmwares
@@ -82,11 +86,12 @@ https://github.com/moggieuk/Happy-Hare/wiki/Tip-Forming-and-Purging
 
 Also please note, that even if your Happy Hare is configured correctly, it relies on slicer to pass the purging matrix correctly.  
 
-As for actual integration, this is very straightforward and the only thing you need to do is edit `mmu_macro_vars.cfg` by setting variable `variable_user_post_load_extension : '_GOOSE_PURGE_HH'` without any parameters.   
+As for actual integration, this is very straightforward and the only thing you need to do is edit `mmu_parameters.cfg` by setting handle `purge_macro: '_goose_purge_hh'` without any parameters.  
+The only thing to keep in mind is that the `purge_macro:` handle is case sensitive, so you need to watch your capitalization.
   
-Note, that we are not calling directly `GOOSE_PURGE` macro, but instead its wrapper `_GOOSE_PURGE_HH`. This is due to how Klipper resolves macros and passes parameters.
+Note, that we are not calling directly `GOOSE_PURGE` macro, but instead its wrapper `_goose_purge_hh`. This is due to how Klipper resolves macros and passes parameters.
   
-Happy Hare does not have any wiping logic embedded, so if you want automatic wiping execution after purge, consider adding your custom wiping macro to the `variable_user_end_script:''` in `goose_belt.cfg`.
+Happy Hare does not have any wiping logic embedded, so if you want automatic wiping execution after purge, consider adding your custom wiping macro to the `variable_user_end_script:''` in `goose_purge.cfg`.
 
 ## Other filament management add-ons
 No other filament management add-ons are supported as of this moment. You are free to develop integration into other add-ons and if you do, we can list them here, however be prepared to support such solution. 
