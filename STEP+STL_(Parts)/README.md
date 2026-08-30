@@ -20,8 +20,8 @@ Choose files from either STEP or STL folder. STEP files are recommended.
 **GBP_Deflector**  
 
 ## Alternative Parts
-**GBP_Arm_nyloc** - Same as default Arm  
-**GBP-Arm_HSI** - Arm variantwith heat set insert instead of nyloc nut. Will require threadlocker to fixate the screw.  
+**GBP_Arm_nyloc** - Arm variant with a nyloc nut  
+**GBP-Arm_HSI** - Same as default Arm 
 **GBP_Deflector_long** - Same as default Deflector  
 **GBP-Deflector_short** - Shorter version of deflector, designed to prevent collision with nozzle. To be used when purger is mounted closer to the printer center  
 **GBP-Deflector_lite** - Part version with only scraper (no deflecting cover) for cleaner look  
