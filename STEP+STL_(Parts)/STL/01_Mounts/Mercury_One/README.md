@@ -1,1 +1,0 @@
-Fixed mount for Mercury One, intended to be mounted to the front of printer. Experimental part, needs to be verified.
