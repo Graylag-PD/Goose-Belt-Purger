@@ -1,3 +1,6 @@
+**BRANTA Branch** - This is a second major iteration of the GBP. Everything is work-in progress and anything can change withou warning, but if you want to testsome newest ideas, you are welcome. For more stable product look into an ANSER Branch
+________________________________________
+
 # Goose Belt Purger (GBP)
 A simple, lightweight, and low-cost belt purger for 3D printers.\
 An alternative to blob-producing purging routines and devices, or traditional purging into towers.\
